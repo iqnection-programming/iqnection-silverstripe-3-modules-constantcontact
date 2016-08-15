@@ -14,7 +14,7 @@
             if (Permission::check('ADMIN')) {
                 $fields->addFieldToTab('Root.ConstantContact', new TextField('CCKey', 'Constant Contact API Key'));
                 $fields->addFieldToTab('Root.ConstantContact', new TextField('CCToken', 'Constant Contact API Token'));
-                $fields->addFieldToTab('Root.ConstantContact', new LiteralField('cclists', '<h2>Lists</h2>'.$this->getCCLists()));
+                $fields->addFieldToTab('Root.ConstantContact', $this->getCCLists() );//new LiteralField('cclists', '<h2>Lists</h2>'.$this->getCCLists()));
             }
         }
         
@@ -28,11 +28,23 @@
             $lists = $CC->getLists();
             
             // get list from the params, or just the first ACTIVE list if no param was passed
-            $the_lists = '</ul>';
-            foreach ($lists as $list) {
-                $the_lists .= '<li>'.$list->id.' : '.$list->name.' ('.$list->contact_count.')</li>';
+            $the_lists = new ArrayList();
+            foreach ($lists as $list) 
+			{
+				$the_lists->push(new DataObject(array(
+					'ID' => $list->id,
+					'Name' => $list->name,
+					'Contacts' => $list->contact_count
+				)));
             }
-            $the_lists .= '</ul>';
-            return $the_lists;
+			$gf_config = GridFieldConfig_Base::create();
+			$gf_config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array('ID'=>'List ID','Name'=>'Name','Contacts' => 'Contacts'));
+            $gridField = GridField::create(
+				'CCLists',
+				'Constant Contact Lists',
+				$the_lists,
+				$gf_config
+			);
+            return $gridField;
         }
     }
