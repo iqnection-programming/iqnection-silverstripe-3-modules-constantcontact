@@ -10,15 +10,13 @@
                 
         public function updateCMSFields(FieldList $fields)
         {
-            // only admins can modify these fields
-            if (Permission::check('ADMIN')) {
-                $fields->addFieldToTab('Root.ConstantContact', new TextField('CCKey', 'Constant Contact API Key'));
-                $fields->addFieldToTab('Root.ConstantContact', new TextField('CCToken', 'Constant Contact API Token'));
-                if ($Lists = $this->getCCLists())
-				{
-	                $fields->addFieldToTab('Root.ConstantContact', $Lists );//new LiteralField('cclists', '<h2>Lists</h2>'.$this->getCCLists()));
-				}				
-            }
+            $tab = $fields->findOrMakeTab('Root.Developer.ConstantContact');
+			$tab->push( new TextField('CCKey', 'Constant Contact API Key'));
+			$tab->push( new TextField('CCToken', 'Constant Contact API Token'));
+			if ($Lists = $this->getCCLists())
+			{
+				$tab->push( $Lists );
+			}				
         }
         
         private function getCCLists()
