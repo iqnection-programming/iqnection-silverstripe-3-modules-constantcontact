@@ -1,6 +1,9 @@
-## Package: iqnection-silverstripe-3-modules-constantcontact
+## Package: iqnection-silverstripe-modules-constantcontact
 # Change Log
 
+
+## [2.0.0]
+- Updated for SilverStripe 4
 
 ## [1.0.1]
 - Moved to Developer Tabset in site settings

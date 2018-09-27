@@ -1,19 +1,22 @@
 {
-	"name": "iqnection-pages/constantcontact",
-	"description": "SilverStripe 3 Constant Contact Integration",
-	"type": "silverstripe-module",
-	"keywords": ["iqnection","pages"],
+	"name": "iqnection-modules/constantcontact",
+	"description": "SilverStripe Constant Contact Integration",
+	"type": "silverstripe-vendormodule",
+	"keywords": ["iqnection","modules","constant contact"],
+	"license": "BSD-3-Clause",
 	"authors": [
 		{
 			"name": "IQnection",
-            "homepage": "http://www.iqnection.com"
+            "homepage": "https://www.iqnection.com"
 		}
 	],
 	"require": {
-		"silverstripe/framework": ">=3",
-		"iqnection-pages/basepages":"*"
+		"silverstripe/framework": "^4.1",
+		"constantcontact/constantcontact": "2.1.*"
 	},
-	"extra": {
-		"installer-name": "iq-constantcontact"
+	"autoload": {
+		"psr-4": {
+			"IQnection\\ConstantContact\\": "app/src/"
+		}
 	}
 }

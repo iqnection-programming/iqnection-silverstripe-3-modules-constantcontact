@@ -1,3 +1,16 @@
-SiteConfig:
+---
+Name: iqconstantcontact
+---
+SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - SiteConfig_ConstantContact
+    - IQnection\ConstantContact\SiteConfig
+---
+Only:
+  classexists: 'IQnection\FormPage\FormPage'
+---
+IQnection\FormPage\FormPage:
+  extensions:
+    - IQnection\ConstantContact\FormPage\FormPage
+IQnection\FormPage\Model\FormPageSubmission:
+  extensions:
+    - IQnection\ConstantContact\FormPage\Model\FormPageSubmission

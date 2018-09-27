@@ -10,10 +10,3 @@ Plug your token into the Site Settings and save.
 
 After saved, you should get a list of lists from Constant Contact
 
-Make a thing that submits forms, add this guy:
-	$cc = new ConstantContactV2();
-	$cc->addContact(array(
-		"first_name" => "xxx",
-		"last_name" => "xxx",
-		"email" => "xxx@xxx.xxx"
-	),$listID);
