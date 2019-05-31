@@ -29,7 +29,7 @@ class FormPageSubmission extends DataExtension
 	
 	public function addToConstantContact()
 	{
-		if ($list_id = $this->owner->FormPage()->ConstantContactListID)
+		if ($list_id = $this->owner->Page()->ConstantContactListID)
 		{
 			$cc = new ConstantContact();
 			$this->owner->extend('onBeforeConstantContactAdd',$cc);

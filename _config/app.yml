@@ -3,7 +3,7 @@ Name: iqconstantcontact
 ---
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - IQnection\ConstantContact\SiteConfig
+    - IQnection\ConstantContact\SiteConfig\SiteConfig
 ---
 Only:
   classexists: 'IQnection\FormPage\FormPage'

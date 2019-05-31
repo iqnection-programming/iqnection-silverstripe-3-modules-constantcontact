@@ -6,6 +6,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
 use SilverStripe\Forms;
+use Ctct\ConstantContact;
 
 class SiteConfig extends DataExtension
 {
@@ -33,8 +34,8 @@ class SiteConfig extends DataExtension
 			return null;
 		}
 		
-		$CC = new ConstantContact();
-		$lists = $CC->getLists();
+		$CC = new ConstantContact($this->owner->ConstantContactApiKey);
+		$lists = $CC->listService->getLists($this->owner->ConstantContactApiToken);
 		
 		// get list from the params, or just the first ACTIVE list if no param was passed
 		$the_lists = ArrayList::create();

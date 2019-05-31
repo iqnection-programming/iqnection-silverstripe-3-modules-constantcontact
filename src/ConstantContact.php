@@ -86,7 +86,7 @@ class ConstantContact
                      *
                      * See: http://developer.constantcontact.com/docs/contacts-api/contacts-index.html#opt_in
                      */
-                    $returnContact = $cc->contactService->addContact($this->ApiToken, $contact);
+                    $returnContact = $cc->contactService->addContact($this->ApiToken, $contact, array('action_by' => 'ACTION_BY_VISITOR'));
                     return $returnContact;
                 } 
 				else 
@@ -111,6 +111,7 @@ class ConstantContact
 					}
                 }
 			} catch (CtctException $ex) {
+
 				$errors[] = $ex->getErrors();
 			}
 		}
